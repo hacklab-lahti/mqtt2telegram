@@ -1,3 +1,5 @@
+MQTT_HOST = "localhost"
+MQTT_PORT = "1883"
 MQTT_TOPICS = ["kolava/#", "renksu/#"]
 
 TELEGRAM_BOT_TOKEN = "" # Ask your Bot API Token from BotFather

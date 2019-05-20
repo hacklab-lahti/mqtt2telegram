@@ -14,6 +14,6 @@ def on_mqtt_received(client, userdata, message):
 
 mqttc = mqtt.Client()
 
-subscribe.callback(on_mqtt_received, settings.MQTT_TOPICS, qos=0, userdata=None, hostname="localhost",
-    port=1883, client_id="", keepalive=60, will=None, auth=None, tls=None,
+subscribe.callback(on_mqtt_received, settings.MQTT_TOPICS, qos=0, userdata=None, hostname=settings.HOST,
+    port=settings.MQTT_PORT, client_id="", keepalive=60, will=None, auth=None, tls=None,
     protocol=mqtt.MQTTv311)

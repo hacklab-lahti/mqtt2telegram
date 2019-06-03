@@ -3,6 +3,7 @@ import paho.mqtt.subscribe as subscribe
 import asyncio
 import aiohttp
 import urllib
+import sys
 
 import settings
 
@@ -35,8 +36,8 @@ class Mqtt2Telegram:
             async with aiohttp.ClientSession() as session:
                 async with session.get(url, timeout=10) as resp:
                     print("Telegram message sent, response from server: {}".format(await resp.text()))
-        except Exception as e:
-            print("Failed to send Telegram message '{}' Error: {}".format(text,e))
+        except:
+            print("Failed to send Telegram message '{}' Error: {}".format(text,sys.exc_info()[0]))
 
     
 if __name__ == "__main__":

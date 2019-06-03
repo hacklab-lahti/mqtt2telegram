@@ -36,7 +36,7 @@ class Mqtt2Telegram:
                 async with session.get(url, timeout=10) as resp:
                     print("Telegram message sent, response from server: {}".format(await resp.text()))
         except Exception as e:
-            print("Failed to send Telegram message '{}' Error: {}").format(text,e)
+            print("Failed to send Telegram message '{}' Error: {}".format(text,e))
 
     
 if __name__ == "__main__":

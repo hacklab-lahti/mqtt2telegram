@@ -29,7 +29,6 @@ class Mqtt2Telegram:
         asyncio.run_coroutine_threadsafe(self._send_to_telegram("{} {}".format(msg.topic, msg.payload)), loop=self.loop)
 
     async def _send_to_telegram(self, text):
-        print("jep")
         try:
             text = urllib.parse.quote(text)
             url = ("https://api.telegram.org/bot{}/sendMessage?chat_id={}&text={}&disable_notification={}".format(settings.TELEGRAM_BOT_TOKEN, settings.TELEGRAM_CHAT_ID, text, settings.TELEGRAM_DISABLE_NOTIFICATION))

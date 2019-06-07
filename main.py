@@ -23,11 +23,10 @@ class Mqtt2Telegram:
         self.mqtt_client.subscribe(settings.MQTT_TOPICS)
 
     def on_mqtt_received(self, client, userdata, msg):
-        if msg.retain:
-            return
         if isinstance(msg.payload, bytes):
             msg.payload = msg.payload.decode("utf-8")
-        
+        if msg.retain:
+            msg.payload = msg.payload + " (retain)"
         print("%s %s" % (msg.topic, msg.payload))
         asyncio.run_coroutine_threadsafe(self._send_to_telegram("{} {}".format(msg.topic, msg.payload)), loop=self.loop)
 

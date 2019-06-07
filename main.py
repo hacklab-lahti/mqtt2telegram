@@ -23,6 +23,8 @@ class Mqtt2Telegram:
         self.mqtt_client.subscribe(settings.MQTT_TOPICS)
 
     def on_mqtt_received(self, client, userdata, msg):
+        if msg.retain:
+            return
         if isinstance(msg.payload, bytes):
             msg.payload = msg.payload.decode("utf-8")
         

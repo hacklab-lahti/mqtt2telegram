@@ -51,7 +51,7 @@ class Mqtt2Telegram:
         if msg.retain:
             msg.payload = msg.payload + " (retain)"
         print("%s %s" % (msg.topic, msg.payload))
-        self.queue.put("{} {}".format(msg.topic, msg.payload))
+        self.queue.put("{} - {} {}".format(time.strftime("%H:%M:%S"), msg.topic, msg.payload))
         
 
     def _send_to_telegram(self, text):
